@@ -1,0 +1,8 @@
+<?php echo $this->abc; ?>
+<?php if(count($this->berufe) > 0): ?>
+<div class="list-group">
+	<?php foreach ($this->berufe as $beruf): ?>
+		<a href="<?php echo $beruf['link']; ?>" class="list-group-item" title="<?php echo $beruf['bezeichnung']; ?>"><?php echo $beruf['bezeichnung']; ?></a>
+	<?php endforeach; ?>
+</div>
+<?php endif; ?>

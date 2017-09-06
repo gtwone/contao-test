@@ -1,0 +1,103 @@
+<div class="row">
+	<div class="col-sm-12 col-md-3">
+		<div class="subnavi hidden-sm hidden-xs affix-top" data-spy="affix" data-offset-top="242">
+			<ul class="nav">
+				<li><a href="{{env::request}}#<?php echo standardize($this->labels['beschreibung']);?>"><?php echo $this->labels['beschreibung']?></a></li>
+				<li><a href="{{env::request}}#<?php echo standardize($this->labels['berufsliste']);?>"><?php echo $this->labels['berufsliste']?></a></li>
+				<li><a href="{{env::request}}#<?php echo standardize($this->labels['links']);?>"><?php echo $this->labels['links']?></a></li>
+			</ul>
+            <?php if($this->berufsfeld['linklehrstelle']): ?>
+            <a href="<?php echo $this->berufsfeld['linklehrstelle']; ?>" class="btn btn-default btn-grouped-vertical"><?php echo $this->labels['findelehre']?></a>
+            <a href="<?php echo $this->berufsfeld['linkschnupperstelle']; ?>" class="btn btn-default btn-grouped-vertical"><?php echo $this->labels['findenschnupper']?></a>
+            <?php endif; ?>
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-9">
+		<div class="row">
+			<div class="col-sm-12 col-md-4 col-md-push-8">
+			<?php if($this->werbung): ?>
+				<a  class="wrb wrb-sm-b-detail" href="<?php echo $this->werbung['url']; ?>" data-name="<?php echo $this->werbung[bezeichnung]; ?>" data-where="Bannerwerbung Beruffeld Detail" data-what="Medium Rectangle" target="_blank">
+					<img src="<?php echo $this->werbung['img_mobil']; ?>" alt="<?php echo $this->werbung['bildbeschreibung']; ?>" title="<?php echo $this->werbung['bildbeschreibung']; ?>" />
+				</a>
+				<a  class="wrb wrb-md-b-detail" href="<?php echo $this->werbung['url']; ?>" data-name="<?php echo $this->werbung[bezeichnung]; ?>" data-where="Bannerwerbung Beruffeld Detail" data-what="Super Banner" target="_blank">
+					<img class="wrb-lg" src="<?php echo $this->werbung['img_desktop']; ?>" alt="<?php echo $this->werbung['bildbeschreibung']; ?>" title="<?php echo $this->werbung['bildbeschreibung']; ?>" />
+				</a>
+				<?php 
+					if($this->werbung['additionalCode']){
+						echo $this->werbung['additionalCode'];
+					}
+				?>
+			<?php endif; ?>
+            <?php foreach($this->video as $video): ?>
+                <?php echo $video; ?>
+                <br />
+            <?php endforeach;?>
+			</div>
+			<div class="col-sm-12 col-md-8 col-md-pull-4">
+				<?php if(count($this->berufsfeld['bilder']) > 1):?>
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				  <div class="carousel-inner" role="listbox">
+					<?php $i=0; foreach($this->berufsfeld['bilder'] as $bild): ?>
+					<div class="item <?php $i++; if($i==1){echo 'active';}?>">
+					  <img src="<?php echo $bild; ?>" />
+					</div>
+					<?php endforeach; ?>
+				  </div>
+				  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				  </a>
+				  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				  </a>
+				</div>
+				<?php elseif(count($this->berufsfeld['bilder']) == 1): ?>
+					<img src="<?php echo $this->berufsfeld['bilder'][0] ?>" />
+				<?php endif; ?>
+                				<h1 id="<?php echo standardize($this->labels['beschreibung']);?>"><?php echo $this->berufsfeld['bezeichnung']; ?></h1>
+				<?php echo $this->berufsfeld['beschreibung']; ?>
+				<?php echo $this->labels['source']?>: berufsberatung.ch<br/>
+				<br/>
+				<h2 id="<?php echo standardize($this->labels['berufsliste']);?>"><?php echo $this->labels['berufsliste']?></h2>
+				<div class="list-group">
+					<?php foreach($this->berufe as $beruf):?>
+						<a href="<?php echo $beruf['url2'] ?>" class="list-group-item">
+							<?php echo $beruf['bezeichnung']; ?>
+						</a>
+					<?php endforeach;?>
+				</div>
+				
+				<?php if(count($this->links) > 0): ?>
+				<h2 id="<?php echo standardize($this->labels['links']);?>"><?php echo $this->labels['links']?></h2>
+				<div class="list-group">
+					<?php foreach($this->links as $link):?>
+						<a href="<?php echo $link['url']; ?>" target="_blank" title="<?php echo $link['bezeichnung']; ?>" class="list-group-item">
+							<?php echo $link['bezeichnung']; ?>
+						</a>
+					<?php endforeach;?>
+				</div>
+				<?php endif; ?>
+                <div class="visible-sm visible-xs berufslexikon-lehrstellenlink">
+                    <div class="row">
+                        <?php if($this->berufsfeld['linklehrstelle']): ?>
+                        <div class="col-sm-6 col-xs-12">
+                            <a href="<?php echo $this->berufsfeld['linklehrstelle']; ?>" class="btn btn-default btn-grouped-vertical"><?php echo $this->labels['findelehre']?></a>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <a href="<?php echo $this->berufsfeld['linkschnupperstelle']; ?>" class="btn btn-default btn-grouped-vertical"><?php echo $this->labels['findenschnupper']?></a>
+                        </div>
+                        <?php endif; ?>    
+                    </div>
+                </div>
+			</div>
+
+		</div>
+		
+	</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		<?php echo($this->jQuery) ?>
+	});
+</script>

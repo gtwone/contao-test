@@ -1,0 +1,31 @@
+/*WERBUNG BERUF DETAIL*/
+.wrb{margin-bottom:10px;}
+.wrb-sm-b-detail{display:block;}
+.wrb-md-b-detail{display:none;}
+
+@media(max-width:990px){
+	.wrb-sm-b-detail{display:none;}
+	.wrb-md-b-detail{display:block; margin-top:1em;}
+}
+
+@media(max-width:360px){
+	.wrb-sm-b-detail{display:block;}
+	.wrb-md-b-detail{display:none; margin-top:1em;}
+}
+
+/*WERBUNG BERUF UEBERSICHT*/
+.wrb-sm,.wrb-md{margin:1em 0 0 0;}
+.wrb-md{display:none}
+
+@media(max-width:360px){
+	.wrb-sm{display:block;}
+	.wrb-md{display:none;}
+}
+@media(min-width:361px){
+	.wrb-sm{display:none;}
+	.wrb-md{display:block;}
+}
+
+@media(max-width:1199px) and (min-width:992px){
+	.banner .wrb-md img{min-width:92% !Important; width:92% !Important; float:right;}
+}

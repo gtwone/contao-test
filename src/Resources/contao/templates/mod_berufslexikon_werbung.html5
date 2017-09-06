@@ -1,0 +1,13 @@
+<?php if($this->werbung): ?>
+<a  class="wrb wrb-sm" href="<?php echo $this->werbung['url']; ?>" data-name="<?php echo $this->werbung[bezeichnung]; ?>" data-where="Bannerwerbung Uebersichtsseiten" data-what="Medium Rectangle" target="_blank">
+	<img src="<?php echo $this->werbung['img_mobil']; ?>" alt="<?php echo $this->werbung['bildbeschreibung']; ?>" title="<?php echo $this->werbung['bildbeschreibung']; ?>" />
+</a>
+<a  class="wrb wrb-md" href="<?php echo $this->werbung['url']; ?>" data-name="<?php echo $this->werbung[bezeichnung]; ?>" data-where="Bannerwerbung Uebersichtsseiten" data-what="Super Banner" target="_blank">
+	<img src="<?php echo $this->werbung['img_desktop']; ?>" alt="<?php echo $this->werbung['bildbeschreibung']; ?>" title="<?php echo $this->werbung['bildbeschreibung']; ?>" />
+</a>
+<?php 
+	if($this->werbung['additionalCode']){
+		echo $this->werbung['additionalCode'];
+	}
+?>
+<?php endif; ?>

@@ -1,0 +1,38 @@
+<div class="blue-img-caption">
+<h1><?php echo $this->labels['title'] ?></h1><br />
+<?php if(count($this->berufsfelder) > 0): ?>
+<?php
+	$i=0; 
+	foreach ($this->berufsfelder as $berufsfeld): ?>
+	<?php 
+		$i++; 
+		if($i == 1){
+			$start = '<div class="row">';
+			$ende = '';
+		}else if($i == count($this->data)){
+			$start = '';
+			$ende = '</div>';
+		}else if($i % 4 == 0){
+			$start = '';
+			$ende = '</div><div class="row">';
+		}else{
+			$start = '';
+			$ende = '';
+		}
+		echo $start
+	?>
+	<div class="col-xs-12 col-sm-6 col-md-3">
+		<figure>
+			<a href="<?php echo $berufsfeld['link'] ?>">
+				<?php if(count($berufsfeld['bilder']) > 0):?>
+					<img src="<?php echo $berufsfeld['bilder'][0] ?>" />
+				<?php endif; ?>					
+				<figcaption class="caption ">
+					<?php echo $berufsfeld['bezeichnung'] ?>
+				</figcaption>
+			</a>
+		</figure>
+	</div>
+	<?php echo $ende; ?>
+<?php endforeach; endif;?>
+</div>
